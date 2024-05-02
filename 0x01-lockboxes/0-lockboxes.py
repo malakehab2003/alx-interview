@@ -4,15 +4,14 @@
 
 def canUnlockAll(boxes):
     """ Create canUnlockAll to check if all boxes unlocked """
-    mySet = {0}
-    visited = set()
-
-    while mySet:
-        box = mySet.pop()
-        visited.add(box)
-
-        for key in boxes[box]:
-            if key not in visited:
-                mySet.add(key)
-
-    return len(visited) == len(boxes)
+    n = len(boxes)
+    seen_boxes = set([0])
+    unseen_boxes = set(boxes[0]).difference(set([0]))
+    while len(unseen_boxes) > 0:
+        boxIdx = unseen_boxes.pop()
+        if not boxIdx or boxIdx >= n or boxIdx < 0:
+            continue
+        if boxIdx not in seen_boxes:
+            unseen_boxes = unseen_boxes.union(boxes[boxIdx])
+            seen_boxes.add(boxIdx)
+    return n == len(seen_boxes)
