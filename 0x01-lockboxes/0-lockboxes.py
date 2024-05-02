@@ -2,25 +2,13 @@
 """ Implement the lockboxes task as interview """
 
 
-def itterateSet(mySet, boxes):
-    """ Itterate over a set """
-    newSet = set()
-    for i in mySet:
-        newSet.update(boxes[i])
-    return newSet
-
-
 def canUnlockAll(boxes):
-    """ Implement can unlock All for lock boxes problem """
-    mySet = set()
-    newSet = set()
-    newSet.update(boxes[0])
-    for i in range(len(boxes)):
-        mySet = mySet.union(newSet)
-        newSet = itterateSet(newSet, boxes)
-    for i in range(len(boxes)):
-        if i == 0:
-            continue
-        elif i not in mySet:
-            return False
-    return True
+    def dfs(box_index):
+        visited.add(box_index)
+        for key in boxes[box_index]:
+            if key not in visited:
+                dfs(key)
+
+    visited = set()
+    dfs(0)
+    return len(visited) == len(boxes)
