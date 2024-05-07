@@ -21,5 +21,4 @@ def canUnlockAll(boxes):
         mySet = mySet.union(newSet)
         newSet = itterateSet(newSet, boxes, mySet - newSet)
     mySet.discard(0)
-    print(mySet)
     return len(mySet) + 1 == len(boxes)
