@@ -19,7 +19,7 @@ def canUnlockAll(boxes):
     newSet.update(boxes[0])
     for i in range(len(boxes)):
         mySet = mySet.union(newSet)
-        newSet = itterateSet(newSet, boxes, mySet)
+        newSet = itterateSet(newSet, boxes, mySet - newSet)
     for i in range(len(boxes)):
         if i == 0:
             continue
