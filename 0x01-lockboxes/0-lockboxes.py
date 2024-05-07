@@ -20,9 +20,6 @@ def canUnlockAll(boxes):
     for i in range(len(boxes)):
         mySet = mySet.union(newSet)
         newSet = itterateSet(newSet, boxes, mySet - newSet)
-    for i in range(len(boxes)):
-        if i == 0:
-            continue
-        elif i not in mySet:
-            return False
-    return True
+    mySet.discard(0)
+    print(mySet)
+    return len(mySet) + 1 == len(boxes)
