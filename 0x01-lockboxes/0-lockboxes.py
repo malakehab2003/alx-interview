@@ -26,4 +26,3 @@ def canUnlockAll(boxes):
         elif i not in mySet:
             return False
     return True
-
