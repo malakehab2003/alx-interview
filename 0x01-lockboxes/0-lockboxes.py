@@ -6,7 +6,7 @@ def itterateSet(mySet, boxes):
     """ Itterate over a set """
     newSet = set()
     for i in mySet:
-        if i >= len(boxes):
+        if i >= len(boxes) or i <= 0:
             continue
         newSet.update(boxes[i])
     return newSet
