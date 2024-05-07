@@ -2,11 +2,11 @@
 """ Implement the lockboxes task as interview """
 
 
-def itterateSet(mySet, boxes):
+def itterateSet(mySet, boxes, oldSet):
     """ Itterate over a set """
     newSet = set()
     for i in mySet:
-        if i >= len(boxes) or i <= 0:
+        if i >= len(boxes) or i <= 0 or i in oldSet:
             continue
         newSet.update(boxes[i])
     return newSet
@@ -19,7 +19,7 @@ def canUnlockAll(boxes):
     newSet.update(boxes[0])
     for i in range(len(boxes)):
         mySet = mySet.union(newSet)
-        newSet = itterateSet(newSet, boxes)
+        newSet = itterateSet(newSet, boxes, mySet)
     for i in range(len(boxes)):
         if i == 0:
             continue
