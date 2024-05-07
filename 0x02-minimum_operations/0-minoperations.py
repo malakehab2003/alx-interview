@@ -2,7 +2,7 @@
 """ Make function take a number and return n of operations """
 
 
-def minOperations(n: int) -> int:
+def minOperations(n):
     """ Return the min number of operations """
     if n <= 1:
         return 0
