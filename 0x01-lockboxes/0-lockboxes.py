@@ -2,16 +2,26 @@
 """ Implement the lockboxes task as interview """
 
 
+def itterateSet(mySet, boxes):
+    """ Itterate over a set """
+    newSet = set()
+    for i in mySet:
+        newSet.update(boxes[i])
+    return newSet
+
+
 def canUnlockAll(boxes):
-    """ Create canUnlockAll to check if all boxes unlocked """
-    n = len(boxes)
-    seen_boxes = set([0])
-    unseen_boxes = set(boxes[0]).difference(set([0]))
-    while len(unseen_boxes) > 0:
-        boxIdx = unseen_boxes.pop()
-        if not boxIdx or boxIdx >= n or boxIdx < 0:
+    """ Implement can unlock All for lock boxes problem """
+    mySet = set()
+    newSet = set()
+    newSet.update(boxes[0])
+    for i in range(len(boxes)):
+        mySet = mySet.union(newSet)
+        newSet = itterateSet(newSet, boxes)
+    for i in range(len(boxes)):
+        if i == 0:
             continue
-        if boxIdx not in seen_boxes:
-            unseen_boxes = unseen_boxes.union(boxes[boxIdx])
-            seen_boxes.add(boxIdx)
-    return n == len(seen_boxes)
+        elif i not in mySet:
+            return False
+    return True
+
