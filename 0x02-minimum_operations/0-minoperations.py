@@ -6,9 +6,9 @@ def minOperations(n):
     """ Return the min number of operations """
     if n <= 1:
         return 0
-    count: int = 0
-    noOfH: int = 1
-    step: int = 1
+    count = 0
+    noOfH = 1
+    step = 1
     while True:
         if noOfH == n:
             return count
