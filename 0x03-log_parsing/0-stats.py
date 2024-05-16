@@ -52,6 +52,8 @@ try:
         if count == 10:
             print_status(total_size)
             count = 0
-except KeyboardInterrupt:
+except (KeyboardInterrupt, EOFError):
     print_status(total_size)
-    sys.exit(0)
+
+
+
