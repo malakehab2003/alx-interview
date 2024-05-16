@@ -1,54 +1,56 @@
 #!/usr/bin/python3
-
+""" solve the log parsing task """
 import sys
 
 
-def print_msg(dict_sc, total_file_size):
-    """
-    Method to print
-    Args:
-        dict_sc: dict of status codes
-        total_file_size: total of the file
-    Returns:
-        Nothing
-    """
+def parse_line(line):
+    """ parse the line """
+    parse = line.split()
+    if len(parse) == 9:
+        try:
+            size = int(parse[-1])
+        except Exception:
+            pass
+        try:
+            status = int(parse[-2])
+        except Exception:
+            pass
+        return size, str(status)
+    return None, None
 
-    print("File size: {}".format(total_file_size))
-    for key, val in sorted(dict_sc.items()):
-        if val != 0:
-            print("{}: {}".format(key, val))
+
+total_size = 0
+count = 0
+status_dict = {
+    '200': 0,
+    '301': 0,
+    '400': 0,
+    '401': 0,
+    '403': 0,
+    '404': 0,
+    '405': 0,
+    '500': 0
+}
 
 
-total_file_size = 0
-code = 0
-counter = 0
-dict_sc = {"200": 0,
-           "301": 0,
-           "400": 0,
-           "401": 0,
-           "403": 0,
-           "404": 0,
-           "405": 0,
-           "500": 0}
+def print_status(total_size):
+    print('File size: {:d}'.format(total_size))
+    for key in sorted(status_dict.keys()):
+        value = status_dict[key]
+        if value == 0:
+            continue
+        print('{:s}: {:d}'.format(key, value))
 
 try:
     for line in sys.stdin:
-        parsed_line = line.split()  # ✄ trimming
-        parsed_line = parsed_line[::-1]  # inverting
+        size, status = parse_line(line)
+        count += 1
+        if total_size is not None and status is not None:
+            total_size += size
+            status_dict[status] += 1
 
-        if len(parsed_line) > 2:
-            counter += 1
-
-            if counter <= 10:
-                total_file_size += int(parsed_line[0])  # file size
-                code = parsed_line[1]  # status code
-
-                if (code in dict_sc.keys()):
-                    dict_sc[code] += 1
-
-            if (counter == 10):
-                print_msg(dict_sc, total_file_size)
-                counter = 0
-
-finally:
-    print_msg(dict_sc, total_file_size)
+        if count == 10:
+            print_status(total_size)
+            count = 0
+except (KeyboardInterrupt, EOFError):
+    print_status(total_size)
