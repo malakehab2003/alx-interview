@@ -4,6 +4,7 @@ import sys
 
 
 def parse_line(line):
+    """ parse the line """
     parse = line.split()
     if len(parse) == 9:
         try:
@@ -16,6 +17,7 @@ def parse_line(line):
             pass
         return size, status
     return None, None
+
 
 total_size = 0
 count = 0
@@ -45,7 +47,3 @@ for line in sys.stdin:
             print('{}: {}'.format(key, value))
         count = 0
         total_size = 0
-
-
-    
-
