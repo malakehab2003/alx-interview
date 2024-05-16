@@ -15,21 +15,21 @@ def parse_line(line):
             status = int(parse[-2])
         except Exception:
             pass
-        return size, status
+        return size, str(status)
     return None, None
 
 
 total_size = 0
 count = 0
 status_dict = {
-    200: 0,
-    301: 0,
-    400: 0,
-    401: 0,
-    403: 0,
-    404: 0,
-    405: 0,
-    500: 0
+    '200': 0,
+    '301': 0,
+    '400': 0,
+    '401': 0,
+    '403': 0,
+    '404': 0,
+    '405': 0,
+    '500': 0
 }
 
 
@@ -39,7 +39,7 @@ def print_status(total_size):
         value = status_dict[key]
         if value == 0:
             continue
-        print('{}: {}'.format(key, value))
+        print('{:s}: {:d}'.format(key, value))
 
 try:
     for line in sys.stdin:
