@@ -40,4 +40,4 @@ try:
             count = 0
 except KeyboardInterrupt:
     print_status(total_size)
-    sys.exit(0)
+    raise
