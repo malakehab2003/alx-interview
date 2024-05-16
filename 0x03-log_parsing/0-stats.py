@@ -1,46 +1,56 @@
 #!/usr/bin/python3
-
-""" script that reads stdin line by line and computes metrics """
-
+""" solve the log parsing task """
 import sys
 
 
-def printStatus(dic, size):
-    """ Prints information """
-    print("File size: {:d}".format(size))
-    for i in sorted(dic.keys()):
-        if dic[i] != 0:
-            print("{}: {:d}".format(i, dic[i]))
+def parse_line(line):
+    """ parse the line """
+    parse = line.split()
+    if len(parse) == 9:
+        try:
+            size = int(parse[-1])
+        except Exception:
+            pass
+        try:
+            status = int(parse[-2])
+        except Exception:
+            pass
+        return size, str(status)
+    return None, None
 
 
-# sourcery skip: use-contextlib-suppress
-statusCodes = {"200": 0, "301": 0, "400": 0, "401": 0, "403": 0,
-               "404": 0, "405": 0, "500": 0}
-
+total_size = 0
 count = 0
-size = 0
+status_dict = {
+    '200': 0,
+    '301': 0,
+    '400': 0,
+    '401': 0,
+    '403': 0,
+    '404': 0,
+    '405': 0,
+    '500': 0
+}
+
+
+def print_status(total_size):
+    print('File size: {:d}'.format(total_size))
+    for key in sorted(status_dict.keys()):
+        value = status_dict[key]
+        if value == 0:
+            continue
+        print('{:s}: {:d}'.format(key, value))
 
 try:
     for line in sys.stdin:
-        if count != 0 and count % 10 == 0:
-            printStatus(statusCodes, size)
-
-        stlist = line.split()
+        size, status = parse_line(line)
         count += 1
+        if total_size is not None and status is not None:
+            total_size += size
+            status_dict[status] += 1
 
-        try:
-            size += int(stlist[-1])
-        except Exception:
-            pass
-
-        try:
-            if stlist[-2] in statusCodes:
-                statusCodes[stlist[-2]] += 1
-        except Exception:
-            pass
-    printStatus(statusCodes, size)
-
-
-except KeyboardInterrupt:
-    printStatus(statusCodes, size)
-    raise
+        if count == 10:
+            print_status(total_size)
+            count = 0
+except (KeyboardInterrupt, EOFError):
+    print_status(total_size)
