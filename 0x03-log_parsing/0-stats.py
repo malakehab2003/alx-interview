@@ -34,7 +34,7 @@ status_dict = {
 
 
 def print_status(total_size):
-    print('File size: {}'.format(total_size))
+    print('File size: {:d}'.format(total_size))
     for key in sorted(status_dict.keys()):
         value = status_dict[key]
         if value == 0:
