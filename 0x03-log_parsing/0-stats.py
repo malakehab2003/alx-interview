@@ -21,7 +21,6 @@ def print_status(total_size):
         value = status_dict[key]
         if value > 0:
             print('{}: {}'.format(key, value))
-            status_dict[key] = 0
 
 total_size = 0
 count = 0
@@ -36,7 +35,6 @@ try:
         count += 1
         if count == 10:
             print_status(total_size)
-            total_size = 0
             count = 0
     print_status(total_size)
 except KeyboardInterrupt:
