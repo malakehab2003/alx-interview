@@ -38,6 +38,7 @@ try:
             print_status(total_size)
             total_size = 0
             count = 0
+    print_status(total_size)
 except KeyboardInterrupt:
     print_status(total_size)
     raise
