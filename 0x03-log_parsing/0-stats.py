@@ -41,6 +41,7 @@ def print_status(total_size):
             continue
         print('{:s}: {:d}'.format(key, value))
 
+
 try:
     for line in sys.stdin:
         size, status = parse_line(line)
