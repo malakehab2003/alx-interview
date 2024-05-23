@@ -21,5 +21,5 @@ def validUTF8(data):
         elif count_1 == 1 or count_1 > 4:
             return False
         else:
-            flag = count_1 + 1
+            flag = count_1 - 1
     return True      
