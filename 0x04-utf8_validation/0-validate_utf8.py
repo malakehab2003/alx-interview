@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+""" Create validUTF8 function """
+
+
 def validUTF8(data):
     """Check if valid UTF8."""
     flag = 0
