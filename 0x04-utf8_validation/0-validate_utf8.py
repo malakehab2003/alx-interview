@@ -29,4 +29,4 @@ def validUTF8(data):
                 return False
             else:
                 flag = count_1 - 1
-    return flag == 0     
+    return flag == 0
