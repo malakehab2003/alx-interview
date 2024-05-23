@@ -8,7 +8,7 @@ def validUTF8(data):
     for i in data:
         if i > 255:
             return False
-        
+
         binary_number = bin(i).replace('0b', '').rjust(8, '0')[-8:]
 
         count_1 = 0
@@ -17,7 +17,6 @@ def validUTF8(data):
             if num != '1':
                 break
             count_1 += 1
-
 
         if flag > 0:
             flag -= 1
@@ -30,4 +29,4 @@ def validUTF8(data):
                 return False
             else:
                 flag = count_1 - 1
-    return flag == 0      
+    return flag == 0     
