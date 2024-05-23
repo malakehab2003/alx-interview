@@ -6,7 +6,7 @@ def validUTF8(data):
     """ check if valid UTF8 """
     flag = 0
     for i in data:
-        if i > 255:
+        if i > 255 or i < 0:
             return False
 
         binary_number = bin(i).replace('0b', '').rjust(8, '0')[-8:]
