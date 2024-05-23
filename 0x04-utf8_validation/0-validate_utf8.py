@@ -8,6 +8,9 @@ def validUTF8(data):
     for i in data:
         if i > 255 or i < 0:
             return False
+        
+        if type(i) is not int:
+            return False
 
         binary_number = bin(i).replace('0b', '').rjust(8, '0')[-8:]
 

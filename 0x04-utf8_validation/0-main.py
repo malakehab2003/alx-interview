@@ -3,7 +3,7 @@
 Main file for testing
 """
 
-validUTF8 = __import__('0-validate_utf8').validUTF8
+validUTF8 = __import__('test').validUTF8
 
 # Test cases with their expected answers
 test_cases = [
