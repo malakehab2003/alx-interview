@@ -6,8 +6,8 @@ def validUTF8(data):
     """ check if valid UTF8 """
     flag = 0
     for i in data:
-        if i > 255 or i < 0:
-            continue
+        # if i > 255 or i < 0:
+        #     continue
 
         if type(i) is not int:
             return False
