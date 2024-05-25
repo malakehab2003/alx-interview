@@ -7,7 +7,7 @@ def validUTF8(data):
     flag = 0
     for i in data:
         if i > 255 or i < 0:
-            return False
+            continue
 
         if type(i) is not int:
             return False
