@@ -94,4 +94,3 @@ while i < n:
         my_list.clear()
         pos_diagonal.clear()
         neg_diagonal.clear()
-
