@@ -31,6 +31,7 @@ my_list = []
 i = 0
 col = 0
 
+
 def remove_old_data(i):
     """
     remove data of the queen which aready moved
@@ -78,7 +79,7 @@ while i < n:
             if col < n - 1:
                 col += 1
             else:
-                i-= 1
+                i -= 1
                 col = remove_old_data(i) + 1
 
         else:
@@ -93,4 +94,3 @@ while i < n:
         my_list.clear()
         pos_diagonal.clear()
         neg_diagonal.clear()
-
