@@ -22,9 +22,10 @@ if n < 4:
     print('N must be at least 4')
     sys.exit(1)
 
+
 def is_safe(board, row, col):
     """ Check if it's safe to place a queen at board[row][col] """
-    
+
     # Check this row on left side
     for i in range(col):
         if board[row][i] == 1:
@@ -41,6 +42,7 @@ def is_safe(board, row, col):
             return False
 
     return True
+
 
 def solve_nqueens_util(board, col):
     """ Util function to solve N-Queens problem """
@@ -62,6 +64,7 @@ def solve_nqueens_util(board, col):
 
     return res
 
+
 def solve_nqueens():
     """ Solve N-Queens problem """
     board = [[0 for _ in range(n)] for _ in range(n)]
@@ -69,5 +72,6 @@ def solve_nqueens():
         print("Solution does not exist")
         return False
     return True
+
 
 solve_nqueens()
