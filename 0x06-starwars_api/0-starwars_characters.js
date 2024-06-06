@@ -24,11 +24,11 @@ request(url, (err, res, body) => {
 function getChars (chars, index) {
   request(chars[index], (err, res, body) => {
     if (err) {
-        console.log(err);
+      console.log(err);
     } else {
       console.log(JSON.parse(body).name);
       if (index + 1 < chars.length) {
-          getChars(chars, index + 1);
+        getChars(chars, index + 1);
       }
     }
   });
