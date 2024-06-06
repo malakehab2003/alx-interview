@@ -26,10 +26,10 @@ function getChars (chars, index) {
     if (err) {
         console.log(err);
     } else {
-        console.log(JSON.parse(body).name);
-        if (index + 1 < chars.length) {
-            getChars(chars, index + 1);
-        }
+      console.log(JSON.parse(body).name);
+      if (index + 1 < chars.length) {
+          getChars(chars, index + 1);
+      }
     }
   });
 }
