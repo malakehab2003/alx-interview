@@ -16,20 +16,20 @@ request(url, (err, res, body) => {
   if (err) {
     console.log(err);
   } else {
-      const chars = JSON.parse(body).characters;
-      getChars(chars, 0);
+    const chars = JSON.parse(body).characters;
+    getChars(chars, 0);
   }
 });
 
-function getChars(chars, index) {
+function getChars (chars, index) {
   request(chars[index], (err, res, body) => {
-      if (err) {
-          console.log(err);
-      } else {
-          console.log(JSON.parse(body).name);
-          if (index + 1 < chars.length) {
-              getChars(chars, index + 1);
-          }
-      }
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(JSON.parse(body).name);
+        if (index + 1 < chars.length) {
+            getChars(chars, index + 1);
+        }
+    }
   });
 }
