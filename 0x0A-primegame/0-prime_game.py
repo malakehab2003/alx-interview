@@ -9,7 +9,6 @@ def is_prime(n):
     for i in range(2, n):
         if n % i == 0:
             return False
-
     return True
 
 
@@ -20,6 +19,8 @@ def isWinner(x, nums):
     maria = 0
     for i in range(x):
         for j in range(nums[i] + 1):
+            if j == 0:
+                continue
             if is_prime(j):
                 n += 1
         if n == 0:
