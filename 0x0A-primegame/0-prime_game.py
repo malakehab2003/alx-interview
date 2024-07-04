@@ -15,13 +15,22 @@ def is_prime(n):
 def isWinner(x, nums):
     """ solve prime game problem """
     n = 0
+    ben = 0
+    maria = 0
     for i in range(x):
         for j in range(nums[i] + 1):
             if is_prime(j):
                 n += 1
-    if n == 0:
+        if n == 0:
+            ben += 1
+        elif n % 2 == 0:
+            ben += 1
+        else:
+            maria += 1
+        n = 0
+    if ben > maria:
         return "Ben"
-    elif n % 2 == 0:
-        return "Ben"
-    else:
+    elif maria > ben:
         return "Maria"
+    else:
+        return None
