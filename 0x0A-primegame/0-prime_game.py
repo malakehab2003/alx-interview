@@ -18,9 +18,9 @@ def isWinner(x, nums):
     ben = 0
     maria = 0
     for i in range(x):
-        if nums[i] == 0:
-            continue
         for j in range(nums[i] + 1):
+            if j == 0:
+                continue
             if is_prime(j):
                 n += 1
         if j == 1:
