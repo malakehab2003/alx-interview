@@ -23,7 +23,7 @@ def isWinner(x, nums):
         for j in range(nums[i] + 1):
             if is_prime(j):
                 n += 1
-        if n == 0:
+        if j == 1:
             ben += 1
         elif n % 2 == 0:
             ben += 1
