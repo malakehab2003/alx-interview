@@ -17,7 +17,7 @@ def sieve_of_eratosthenes(max_n):
 
 def isWinner(x, nums):
     """ get the winner of maria and ben """
-    if x == 0 or not nums:
+    if x <= 0 or not nums:
         return None
 
     max_n = max(nums)
